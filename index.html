@@ -9,7 +9,7 @@
 <body>
 
 <h1>Biosz kvíz</h1>
-<div id="timer">30</div>
+<div id="timer">10:00</div>
 
 <div id="quizBox"></div>
 
@@ -63,13 +63,20 @@ let questions = [
 
 let current = 0;
 let score = 0;
-let timeLeft = 30;
+let timeLeft = 600; // 10 perc = 600 mp
 let timer;
 let userAnswers = [];
+
+function formatTime(sec) {
+    let m = Math.floor(sec / 60);
+    let s = sec % 60;
+    return `${m}:${s < 10 ? "0" + s : s}`;
+}
 
 function startQuiz() {
     document.getElementById("startBtn").style.display = "none";
     document.getElementById("stopScreen").style.display = "none";
+    document.getElementById("timer").innerText = formatTime(timeLeft);
     showQuestion();
     startTimer();
 }
@@ -77,7 +84,7 @@ function startQuiz() {
 function startTimer() {
     timer = setInterval(() => {
         timeLeft--;
-        document.getElementById("timer").innerText = timeLeft;
+        document.getElementById("timer").innerText = formatTime(timeLeft);
 
         if (timeLeft <= 0) {
             clearInterval(timer);
@@ -137,7 +144,8 @@ function showStopScreen() {
 
 document.getElementById("continueBtn").addEventListener("click", function () {
     document.getElementById("stopScreen").style.display = "none";
-    timeLeft = 30;
+    timeLeft = 600; // újra 10 perc
+    document.getElementById("timer").innerText = formatTime(timeLeft);
     startTimer();
     showQuestion();
 });
