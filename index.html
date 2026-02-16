@@ -20,7 +20,10 @@
 <button id="showAnswersBtn" style="display:none;">Válaszok megtekintése</button>
 <div id="answersList" style="display:none;"></div>
 
-<div id="stopScreen">STOP</div>
+<div id="stopScreen">
+    STOP
+    <button id="continueBtn">Folytatás</button>
+</div>
 
 <script>
 let questions = [
@@ -129,7 +132,15 @@ function endQuiz() {
 function showStopScreen() {
     document.getElementById("quizBox").innerHTML = "";
     document.getElementById("stopScreen").style.display = "flex";
+    clearInterval(timer);
 }
+
+document.getElementById("continueBtn").addEventListener("click", function () {
+    document.getElementById("stopScreen").style.display = "none";
+    timeLeft = 30;
+    startTimer();
+    showQuestion();
+});
 
 document.getElementById("showAnswersBtn").addEventListener("click", function () {
     let html = "<h2>Helyes válaszok</h2>";
