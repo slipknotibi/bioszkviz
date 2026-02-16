@@ -13,14 +13,14 @@
 
 <div id="quizBox"></div>
 
-<button id="startBtn">Kezdés</button>
+<button id="startBtn" onclick="startQuiz()">Kezdés</button>
 
 <div id="resultBox"></div>
 
 <button id="showAnswersBtn" style="display:none;">Válaszok megtekintése</button>
 <div id="answersList" style="display:none;"></div>
 
-<div id="stopScreen" style="display:none;">STOP</div>
+<div id="stopScreen">STOP</div>
 
 <script>
 let questions = [
@@ -30,7 +30,7 @@ let questions = [
         correct: 1
     },
     {
-        question: "Melyik szerv felelős a vér pumpálásáért?",
+        question: "Melyik szerv pumpálja a vért?",
         answers: ["Tüdő", "Szív", "Gyomor"],
         correct: 1
     }
@@ -44,6 +44,7 @@ let userAnswers = [];
 
 function startQuiz() {
     document.getElementById("startBtn").style.display = "none";
+    document.getElementById("stopScreen").style.display = "none";
     showQuestion();
     startTimer();
 }
@@ -97,7 +98,7 @@ function endQuiz() {
 
 function showStopScreen() {
     document.getElementById("quizBox").innerHTML = "";
-    document.getElementById("stopScreen").style.display = "block";
+    document.getElementById("stopScreen").style.display = "flex";
 }
 
 // --- VÁLASZOK MEGTEKINTÉSE ---
