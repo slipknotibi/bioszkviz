@@ -114,6 +114,7 @@ h1 {
     #timer { font-size: 22px; }
     .answers button { font-size: 15px; padding: 10px; }
 }
+
 /* MOBILOS NAGYÍTOTT NÉZET */
 @media (max-width: 600px) {
 
@@ -163,4 +164,5 @@ h1 {
         font-size: 70px;
     }
 }
+
 
